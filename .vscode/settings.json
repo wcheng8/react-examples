@@ -1,0 +1,15 @@
+{
+  "emmet.excludeLanguages": [
+
+    "markdown"
+  ],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.preferences": {
+    "css.webkitProperties": "border-right,animation",
+    "css.mozProperties": "",
+    "css.oProperties": null,
+    "css.msProperties": null
+  }
+}
