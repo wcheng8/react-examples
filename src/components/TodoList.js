@@ -13,6 +13,7 @@ class TodoList extends React.Component {
 				key={todo.id}
 				todo={todo}
 				markComplete={this.props.markComplete}
+				delTodo={this.props.delTodo}
 			/>
 		));
 	}

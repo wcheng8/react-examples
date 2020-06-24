@@ -1,5 +1,6 @@
 import React from "react";
 import TodoList from "./components/TodoList";
+import Header from "./components/Header";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -35,11 +36,22 @@ class App extends React.Component {
 			}),
 		});
 	};
+
+	delTodo = (id) => {
+		this.setState({
+			todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+		});
+	};
 	render() {
 		console.log(this.state.todos);
 		return (
 			<>
-				<TodoList todos={this.state.todos} markComplete={this.markComplete} />
+				<Header />
+				<TodoList
+					todos={this.state.todos}
+					markComplete={this.markComplete}
+					delTodo={this.delTodo}
+				/>
 			</>
 		);
 	}
