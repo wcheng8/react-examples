@@ -44,6 +44,19 @@ class App extends React.Component {
 			todos: [...this.state.todos.filter((todo) => todo.id !== id)],
 		});
 	};
+
+	addTodo = (title) => {
+		this.setState({
+			todos: [
+				...this.state.todos,
+				{
+					id: Math.floor(Math.random() * 10000),
+					title,
+					isCompleted: false,
+				},
+			],
+		});
+	};
 	render() {
 		console.log(this.state.todos);
 		return (
@@ -54,7 +67,7 @@ class App extends React.Component {
 					markComplete={this.markComplete}
 					delTodo={this.delTodo}
 				/>
-				<AddTodo />
+				<AddTodo addTodo={this.addTodo} />
 			</div>
 		);
 	}
