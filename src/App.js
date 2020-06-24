@@ -3,6 +3,9 @@ import TodoList from "./components/TodoList";
 import Header from "./components/Header";
 import AddTodo from "./components/AddTodo";
 import "./App.css";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import About from "./components/Pages/About";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -31,7 +34,7 @@ class App extends React.Component {
 	markComplete = (id) => {
 		this.setState({
 			todos: this.state.todos.map((todo) => {
-				if (todo.id == id) {
+				if (todo.id === id) {
 					todo.isCompleted = !todo.isCompleted;
 				}
 				return todo;
@@ -60,15 +63,26 @@ class App extends React.Component {
 	render() {
 		console.log(this.state.todos);
 		return (
-			<div className="container">
-				<Header />
-				<TodoList
-					todos={this.state.todos}
-					markComplete={this.markComplete}
-					delTodo={this.delTodo}
-				/>
-				<AddTodo addTodo={this.addTodo} />
-			</div>
+			<Router>
+				<div className="container">
+					<Header />
+					<Route
+						exact
+						path="/"
+						render={(props) => (
+							<React.Fragment>
+								<TodoList
+									todos={this.state.todos}
+									markComplete={this.markComplete}
+									delTodo={this.delTodo}
+								/>
+								<AddTodo addTodo={this.addTodo} />
+							</React.Fragment>
+						)}
+					/>
+					<Route path="/about" component={About} />
+				</div>
+			</Router>
 		);
 	}
 }
