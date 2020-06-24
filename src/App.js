@@ -1,6 +1,8 @@
 import React from "react";
 import TodoList from "./components/TodoList";
 import Header from "./components/Header";
+import AddTodo from "./components/AddTodo";
+import "./App.css";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -45,14 +47,15 @@ class App extends React.Component {
 	render() {
 		console.log(this.state.todos);
 		return (
-			<>
+			<div className="container">
 				<Header />
 				<TodoList
 					todos={this.state.todos}
 					markComplete={this.markComplete}
 					delTodo={this.delTodo}
 				/>
-			</>
+				<AddTodo />
+			</div>
 		);
 	}
 }

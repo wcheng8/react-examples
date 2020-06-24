@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
 	return (
-		<header style={}>
+		<header style={headerStyle}>
 			<h1>TodoList</h1>
 		</header>
 	);
