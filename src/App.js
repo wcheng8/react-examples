@@ -1,21 +1,35 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-
+import React, { useState } from "react";
 import "./App.css";
-import DogImg from "./DogImg";
-import Home from "./Home";
-export class App extends Component {
-	render() {
-		return (
-			<div>
-				<h1>Random Dog Image Generator by Breed!</h1>
-				<BrowserRouter>
-					<Route exact path="/" component={Home} />
-					<Route exact path="/dog/:breed" component={DogImg} />
-				</BrowserRouter>
-			</div>
-		);
-	}
-}
+
+import Auth from "./Auth";
+
+const App = () => {
+	const [email, setemail] = useState("");
+	const [password, setpassword] = useState("");
+	const [hasact, setact] = useState(false);
+
+	const onAuth = () => {
+		setact(!hasact);
+	};
+
+	const onemail = (e) => {
+		setemail(e.target.value);
+	};
+	const onpassword = (e) => {
+		setpassword(e.target.value);
+	};
+	return (
+		<div>
+			<Auth
+				hasact={hasact}
+				onAuth={onAuth}
+				onpassword={onpassword}
+				onemail={onemail}
+				password={password}
+				email={email}
+			/>
+		</div>
+	);
+};
 
 export default App;
